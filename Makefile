@@ -1,9 +1,3 @@
-
----
-
-## 3) Makefile
-
-```makefile
 CC=gcc
 CFLAGS=-std=c11 -Wall -Wextra -O2
 SRC=src
