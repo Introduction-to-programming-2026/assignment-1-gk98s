@@ -22,23 +22,50 @@ Hints:
 */
 
 int main(void) {
-    int n = 0;
+  int n = 0;
+  int rc;
+  while (1) {
+    printf("Enter a positive integer n (> 0): ");
+    rc = scanf("%d", &n);
 
-    // TODO 1: keep asking until n > 0
-    while (n <= 0) {
-        printf("Enter a positive integer n (> 0): ");
-        // TODO: scanf n
-        // If scanf fails, clear input safely (optional for beginners)
+    if (rc != 1) {
+      printf("Invalid input. Please enter a valid integer.\n");
+      while (getchar() != '\n');
+      continue;
     }
 
-    printf("\n=== Counting ===\n");
-    // TODO 2: print 1..n
+    if (n <= 0) {
+      printf("Please enter a number greater than 0.\n");
+      continue;
+    }
 
-    printf("\n=== Sum 1..n ===\n");
-    // TODO 3: compute sum
+    break;
+  }
 
-    printf("\n=== Factorial n! ===\n");
-    // TODO 4: compute factorial
+  printf("\n=== Counting ===\n");
 
-    return 0;
+  for (int i = 1; i <= n; i++) {
+    printf("%d ", i);
+  }
+  printf("\n");
+
+  printf("\n=== Sum 1..n ===\n");
+
+  unsigned long long sum = 0;
+
+  for (int i = 1; i <= n; i++) {
+    sum += i;
+  }
+
+  printf("Sum: %llu\n", sum);
+  printf("\n=== Factorial n! ===\n");
+
+  unsigned long long factorial = 1;
+
+  for (int i = 1; i <= n; i++) {
+    factorial *= i;
+  }
+
+  printf("Factorial: %llu\n", factorial);
+  return 0;
 }

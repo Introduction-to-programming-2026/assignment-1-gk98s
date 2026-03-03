@@ -22,10 +22,8 @@ Hints:
 */
 
 int main(void) {
-    // TODO 1: Print sizes
-    printf("=== Sizes of Data Types (bytes) ===\n");
-    // Example:
-    // printf("int: %zu\n", sizeof(int));
+   printf("=== Sizes of Data Types (bytes) ===\n");
+   
    printf("int: %zu\n", sizeof(int));
    printf("long: %zu\n", sizeof(long));
    printf("long long: %zu\n", sizeof(long long));
@@ -33,23 +31,22 @@ int main(void) {
    printf("double: %zu\n", sizeof(double));
    printf("char: %zu\n", sizeof(char));
 
-    // TODO 2: Read input from user
-    int age = 0;
-    double height = 0.0;
-    char firstLetter = '?';
+   
+   int age = 0;
+   double height = 0.0;
+   char firstLetter = '?';
 
-    printf("\nEnter your age: ");
+   printf("\nEnter your age: ");
    if (scanf("%d", &age) != 1) return 1;
 
-    printf("Enter your height in meters (e.g., 1.72): ");
+   printf("Enter your height in meters (e.g., 1.72): ");
    if (scanf("%lf", &height) != 1) return 1;
 
-    printf("Enter the first letter of your name: ");
+   printf("Enter the first letter of your name: ");
    if (scanf(" %c", &firstLetter) != 1) return 1;
 
-    // TODO 3: Print summary
-    printf("\n=== Summary ===\n");
+   printf("\n=== Summary ===\n");
    printf("%c is %d years old and %.2f meters tall.\n", firstLetter, age, height);
 
-    return 0;
+   return 0;
 }
