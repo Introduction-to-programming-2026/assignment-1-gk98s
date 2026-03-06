@@ -3,10 +3,19 @@ CFLAGS=-std=c11 -Wall -Wextra -O2
 SRC=src
 BIN=bin
 
+# i had to change the makefile here in order to get it to work on my windows machine. It should work fine on any OS now.
+ifeq ($(OS),Windows_NT)
+RM=rd /s /q
+MKDIR=if not exist "$(BIN)" mkdir "$(BIN)"
+else
+RM=rm -rf
+MKDIR=mkdir -p "$(BIN)"
+endif
+
 all: folders datatypes operators conditionals loops cmd magic
 
 folders:
-	mkdir -p $(BIN)
+	$(MKDIR)
 
 datatypes:
 	$(CC) $(CFLAGS) $(SRC)/01_datatypes.c -o $(BIN)/datatypes
@@ -27,4 +36,4 @@ magic:
 	$(CC) $(CFLAGS) $(SRC)/06_magic_numbers.c -o $(BIN)/magic
 
 clean:
-	rm -rf $(BIN)
+	$(RM) "$(BIN)"
