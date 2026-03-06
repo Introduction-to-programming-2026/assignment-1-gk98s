@@ -27,27 +27,37 @@ Extra (optional):
 */
 
 int main(void) {
-    // TODO 1: define constants here (use const double / const int)
+   const int QUIZ_WEIGHT = 40; // percentage
+   const int EXAM_WEIGHT = 60; // percentage
+   const int PASS_SCORE = 50;
+   const int MIN_SCORE = 0;
+   const int MAX_SCORE = 100;
 
-    double quiz = 0.0;
-    double exam = 0.0;
+   double quiz = 0.0;
+   double exam = 0.0;
 
-    printf("Enter quiz score (0-100): ");
-    // TODO: scanf quiz
-    printf("Enter exam score (0-100): ");
-    // TODO: scanf exam
+   printf("Enter quiz score (0-100): ");
+   scanf("%lf", &quiz);
 
-    // TODO 3: validate inputs using MIN_SCORE and MAX_SCORE
+   printf("Enter exam score (0-100): ");
+   scanf("%lf", &exam);
+   
+   if (quiz < MIN_SCORE || quiz > MAX_SCORE || exam < MIN_SCORE || exam > MAX_SCORE) {
+      printf("Error: Scores must be between %d and %d.\n", MIN_SCORE, MAX_SCORE);
+      return 1;
+   }
+   
+   double final_score = quiz * QUIZ_WEIGHT / 100.0 + exam * EXAM_WEIGHT / 100.0;
 
-    // Old logic (replace numbers with constants):
-    // double finalScore = quiz * 0.4 + exam * 0.6;
+   printf("\nFinal score: %.2f\n", final_score);
 
-    // TODO 2: compute finalScore using QUIZ_WEIGHT and EXAM_WEIGHT
-    double finalScore = 0.0;
-
-    printf("\nFinal score: %.2f\n", finalScore);
-
-    // TODO 4: PASS/FAIL using PASS_SCORE
-
-    return 0;
+   if (final_score >= PASS_SCORE) {
+      printf("Result: Pass\n");
+   } else if (final_score >= 90) {
+      printf("Result: Excellent\n");
+   } else {
+      printf("Result: Needs Improvement\n");
+   }
+   
+   return 0;
 }
